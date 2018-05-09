@@ -1,0 +1,56 @@
+server:
+  servlet:
+    context-path: /kurt
+#    jsp:
+#      init-parameters:
+#        compilerSourceVM: 1.8
+#        compilerTargetVM: 1.8
+
+
+spring:
+  #resources:
+    #static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/META-INF/resources/WEB-INF/
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      #ddl-auto: create-drop
+      #ddl-auto: validate
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost/test?serverTimezone=UTC
+    username: demo
+    password: demo
+
+myds:
+  datasource:
+    url: jdbc:mysql://localhost/test?serverTimezone=UTC
+    username: demo
+    password: demo
+
+logging:
+  level:
+    org.apache.jasper.servlet.JspServlet: DEBUG
+    org.apache.jasper.compiler: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.SQL: DEBUG
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+
+    
+    
+# Custom message that is displayed in JSP page http://localhost:8080/kurt/
+welcome:
+  message: Hello Kurt

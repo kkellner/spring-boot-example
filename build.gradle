@@ -1,0 +1,86 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+/*
+bootWar {
+	classifier = 'boot'
+}
+*/
+
+springBoot {
+    // This statement tells the Gradle Spring Boot plugin
+    // to generate a file
+    // build/resources/main/META-INF/build-info.properties
+    // that is picked up by Spring Boot to display
+    // via /info endpoint.
+    buildInfo()
+}
+
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+
+	//Allows to run spring boot app on standalone containers
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	
+	// Needed for JSP support
+	providedRuntime group: 'javax.servlet', name: 'jstl', version: '1.2'
+	providedRuntime group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.7'
+	
+	// Needed for datasource
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile("org.springframework.boot:spring-boot-starter-data-rest")
+	
+	
+	// Allow auto-reload of jsp files
+	compileOnly("org.springframework.boot:spring-boot-devtools")
+	
+	
+	// If you want to include some common css/js files
+	// Example:
+	//   <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+	//   <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	compile("org.webjars:bootstrap:3.3.7")
+	
+    
+	// Needed for @ConfigurationProperties
+	compile("org.springframework.boot:spring-boot-configuration-processor")
+	
+	// Add actuators
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+	
+	compile("org.springframework.boot:spring-boot-actuator-autoconfigure")
+	
+	
+	
+	
+	// Database drivers
+	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+	
+	compile group: 'org.eclipse.jdt.core.compiler', name: 'ecj', version: '4.6.1'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}

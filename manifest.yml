@@ -1,0 +1,10 @@
+---
+applications:
+- name: boot-war
+  memory: 1G
+  instances: 1
+  buildpack: java_buildpack_offline
+  path: build/libs/spring-boot-example-0.0.1-SNAPSHOT.war
+  host: cis-sb-boot-war
+  #routes:
+  #- route: example-spring-boot
