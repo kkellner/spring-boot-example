@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.info.BuildProperties;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,9 @@ public class AppConfig implements WebMvcConfigurer {
 
 	@Autowired
 	RequestInterceptor requestInterceptor;
+	
+	//@Autowired
+	//BuildProperties buildProperties;
 	
 	/*
 	@Override
@@ -61,5 +65,12 @@ public class AppConfig implements WebMvcConfigurer {
 		return properties.initializeDataSourceBuilder().build();
 	}	
 
+/*
+	@Bean
+	public String exampleBuildInfo() {
+		String value = buildProperties.getVersion();
+		return value;
+	}
+*/
 	
 }

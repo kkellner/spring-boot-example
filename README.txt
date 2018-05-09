@@ -13,3 +13,6 @@ https://o7planning.org/en/11653/using-multiple-datasources-with-spring-boot-and-
 
 Rest repository docs:
 https://docs.spring.io/spring-data/rest/docs/current/reference/html/
+
+Actuator info:
+http://www.baeldung.com/spring-boot-actuators
